@@ -2,22 +2,21 @@
 
 int main() {
 	int number = 0;
-	//int count = 0;
-	bool isPrime = true;  // less memory, readability
+	bool isPrime = true;
 
 	std::cout << "Input number : ";
 	std::cin >> number;
 
 	for (int i = 2; i < number; i++) {
 		if (number % i == 0) {
-			//count++; //count = count + 1;
-			isPrime = false; // remove add operation
+			isPrime = false;
+			break; // The loop terminates as soon as a divisor is found
 		}
+		std::cout << i << " ";
 	}
 
-
-	//if (count == 0)
-	if (isPrime != 0)
+	//if (isPrime != false)
+	if (isPrime)  // remove comparison operator
 		std::cout << number << " is prime number~\n";
 	else
 		std::cout << number << " is NOT prime number!\n";
