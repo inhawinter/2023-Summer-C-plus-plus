@@ -1,1 +1,1 @@
-# work_cpp
+# This repository contains practical exercises, assignments, and lecture notes related to the c plus plus language course at Inha University.
