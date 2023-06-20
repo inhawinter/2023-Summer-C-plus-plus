@@ -17,14 +17,23 @@ bool isPrime(int n) { // pass by value
 }
 
 int main() {
-	int number = 0;
+	int n1 = 0, n2 = 0;
 
-	std::cout << "Input number : ";
-	std::cin >> number;
+	std::cout << "Input number #1 : ";
+	std::cin >> n1;
 
-	if (isPrime(number))
-		std::cout << number << " is prime number~\n";
-	else
-		std::cout << number << " is NOT prime number!\n";
+	std::cout << "Input number #2 : ";
+	std::cin >> n2;
+
+	if (n1 > n2) {
+		int temp = n1;
+		n1 = n2;
+		n2 = temp;
+	}
+
+	for (int i = n1; i <= n2; i++) {
+		if (isPrime(i))
+			std::cout << i << " ";
+	}
 	return 0;
 }
