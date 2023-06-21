@@ -1,33 +1,21 @@
 #include <iostream>
+#include <cstdio>
 using namespace std;
 
 int main() {
+	printf("%.15lf\n", 2.7 + 3.1);
+
 	int a = 9;
 	int* pa = &a;
-	int** ppa = &pa;
-	char univ[] = "inha\n";
-	//char univ[] = { 'i', 'n', 'h', 'a', '\n' };
-	//char univ[] = { 'i', 'n', 'h', 'a', '\n', '\0'};
-	//char univ[] = { 'i', 'n', '\0', 'h', 'a', '\n'};
-	//char univ[] = { 'i', 'n', 0, 'h', 'a', '\n' };
-	//char univ[] = { 'i', 'n', NULL, 'h', 'a', '\n' };
-	//char univ[] = { 'i', 'n', nullptr, 'h', 'a', '\n' };  // error
+	double b = 2.7;
+	void* pv = pa;
+	//pa = &b;	
 
-	cout << univ;
-	
-	ppa = nullptr;  // C++11
+	cout << &a << " " << pa << '\n';
+	cout << a << " " << *(int*)pv << '\n';
 
-	//ppa = 0;
-	//ppa = NULL;
-	 
-	//ppa = '\0';
-	if (ppa) {
-		cout << a << " " << *pa << " " << **ppa << '\n';
-		cout << &a << " " << pa << " " << *ppa << '\n';
-	}
-
+	pv = &b;
+	//cout << a << " " << *(int*)pv << '\n';
+	cout << a << " " << *(double*)pv << '\n';
 	return 0;
 }
-
-
-
