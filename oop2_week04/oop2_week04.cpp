@@ -12,6 +12,10 @@ public:
 		cout << "default constructor!\n";
 		count++;
 	}
+	~Student() {
+		cout << "destructor activated.. RIP!\n";
+		count--;
+	}
 	static int getCount() { // inline
 		return count;
 	}
