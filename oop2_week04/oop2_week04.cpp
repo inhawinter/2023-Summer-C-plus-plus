@@ -20,13 +20,11 @@ public:
 		return count;
 	}
 };
-void test() {
+Student* test() {
 	Student s3;	
 	Student* s4 = new Student(); // dynamic memory allocation
-	delete s4; // free heap memory
-	//delete s4; // double free bug
-	s4 = nullptr;
 	cout << Student::getCount() << '\n';
+	return s4; // return heap memory address
 }
 int Student::count = 0;  // initialize
 int main() {
@@ -34,7 +32,9 @@ int main() {
 	Student s2;
 	cout << s1.getCount() << '\n';
 	cout << Student::getCount() << '\n';
-	test();
-	cout << Student::getCount() << '\n'; // 2
+	Student* s5 = test();
+	delete s5;
+	s5 = nullptr;
+	cout << Student::getCount() << '\n';
 	return 0;
 }
