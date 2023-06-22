@@ -1,33 +1,40 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+class Student {
+private:
+	int id;
+	string name;
+	static int count;
+public:
+	Student() {
+		cout << this << " default constructor!\n";
+		count++;
+	}
+	~Student() {
+		cout << this << " destructor activated.. RIP!\n";
+		count--;
+	}
+	static int getCount() { // inline
+		return count;
+	}
+};
+void test() {
+	Student s3;	
+	Student* s4 = new Student(); // dynamic memory allocation
+	delete s4; // free heap memory
+	//delete s4; // double free bug
+	s4 = nullptr;
+	cout << Student::getCount() << '\n';
+}
+int Student::count = 0;  // initialize
 int main() {
-	/*
-	* fee : adult/10000/19+, teenager/7000/18~9, child/5000/8-
-	*/
-	int noOfPeople = 0;
-	int total = 0;
-
-	cout << "Input no of people : ";
-	cin >> noOfPeople;
-	int* pAge = new int[noOfPeople]; // dynamic memory allocation (heap memory)
-
-	for (auto i = 0; i < noOfPeople; i++) {
-		cout << "Input age : ";
-		cin >> *(pAge + i);  // cin >> pAge[i];
-	}
-	for (auto i = 0; i < noOfPeople; i++) {
-		int age = pAge[i];
-		if (age >= 19)
-			total = total + 10000;
-		else if (age >= 8)
-			total = total + 7000;
-		else
-			total = total + 5000;
-	}
-	cout << "People : " << noOfPeople << ", Fee : " << total << '\n';
-	delete[] pAge; // free heap memory (prevent memory leak)
-	pAge = nullptr;
-
+	Student s1;
+	Student s2;
+	cout << s1.getCount() << '\n';
+	cout << Student::getCount() << '\n';
+	test();
+	cout << Student::getCount() << '\n'; // 2
 	return 0;
 }
