@@ -26,7 +26,8 @@ int main() {
 			total = total + 5000;
 	}
 	cout << "People : " << noOfPeople << ", Fee : " << total << '\n';
-	// memory leak
+	delete[] pAge; // free heap memory (prevent memory leak)
+	pAge = nullptr;
 
 	return 0;
 }
